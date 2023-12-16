@@ -9,40 +9,42 @@
 </head>
 
 <body>
-    <h1>Gestor de Tareas</h1>
+    <div id="cuadro">
+        <h1>Gestor de Tareas</h1>
 
-    <div id="tasks">
-        <div class="task-column">
-            <h2>Pendiente</h2>
-            <ul id="pendiente" class="task-list"></ul>
-        </div>
-        <div class="task-column">
-            <h2>En Progreso</h2>
-            <ul id="en-progreso" class="task-list"></ul>
-        </div>
-        <div class="task-column">
-            <h2>Hecho</h2>
-            <ul id="hecho" class="task-list"></ul>
-        </div>
-    </div>
-
-    <div id="agregar-tarea-container">
-        <h2>Agregar Nueva Tarea</h2>
-        <input id="descripcion" type="text" placeholder="Descripcion">
-        <input id="asignado" type="text" placeholder="Asignado a">
-        <input id="fecha" type="date">
-        <div class="contenedor-etiquetas-tarea">
-            <div class="contenedor-agregar-tarea">
-                <button id="agregar-tarea">Agregar Tarea</button>
+        <div id="tasks">
+            <div class="task-column">
+                <h2>Pendiente</h2>
+                <ul id="pendiente" class="task-list"></ul>
             </div>
-            <div class="agregar-etiqueta">
-                <label for="etiqueta">Etiquetas</label>
-                <select id="etiqueta" name="etiqueta">
-                    <option value="todo">TODO</option>
-                    <option value="fixme">FIXME</option>
-                    <option value="review">REVIEW</option>
-                    <option value="ninguna" selected>Ninguna</option>
-                </select>
+            <div class="task-column">
+                <h2>En Progreso</h2>
+                <ul id="en-progreso" class="task-list"></ul>
+            </div>
+            <div class="task-column">
+                <h2>Hecho</h2>
+                <ul id="hecho" class="task-list"></ul>
+            </div>
+        </div>
+
+        <div id="agregar-tarea-container">
+            <h2>Agregar Nueva Tarea</h2>
+            <input id="descripcion" type="text" placeholder="Descripcion">
+            <input id="asignado" type="text" placeholder="Asignado a">
+            <input id="fecha" type="date">
+            <div class="contenedor-etiquetas-tarea">
+                <div class="contenedor-agregar-tarea">
+                    <button id="agregar-tarea">Agregar Tarea</button>
+                </div>
+                <div class="agregar-etiqueta">
+                    <label for="etiqueta">Etiquetas</label>
+                    <select id="etiqueta" name="etiqueta">
+                        <option value="todo">TODO</option>
+                        <option value="fixme">FIXME</option>
+                        <option value="review">REVIEW</option>
+                        <option value="ninguna" selected>Ninguna</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
