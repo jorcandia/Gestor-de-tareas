@@ -29,19 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
       switch (tarea.etiqueta) {
         case "todo":
           // Resaltado (highlight) para TODO
-          li.innerHTML = `<span style="background-color: #ffff72;">TODO:</span> ${tarea.descripcion} (Asignado a: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
+          li.innerHTML = `<span style="background-color: #ffff72;">TODO:</span> ${tarea.descripcion} (Descripcion: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
           break;
         case "fixme":
           // Resaltado (highlight) para FIXME
-          li.innerHTML = `<span style="background-color: #ff9999;">FIXME:</span> ${tarea.descripcion} (Asignado a: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
+          li.innerHTML = `<span style="background-color: #ff9999;">FIXME:</span> ${tarea.descripcion} (Descripcion: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
           break;
         case "review":
           // Resaltado (highlight) para REVIEW
-          li.innerHTML = `<span style="background-color: #fffae5;">REVIEW:</span> ${tarea.descripcion} (Asignado a: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
+          li.innerHTML = `<span style="background-color: #fffae5;">REVIEW:</span> ${tarea.descripcion} (Descripcion: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
           break;
         default:
           // Si no hay etiqueta, se usa el estilo predeterminado
-          li.textContent = `${tarea.descripcion} (Asignado a: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
+          li.textContent = `${tarea.descripcion} (Descripcion: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
       }
 
       const lista = document.querySelector(`#${estado}`);
