@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Gestor de Tareas</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -30,10 +31,22 @@
         <input id="descripcion" type="text" placeholder="Descripcion">
         <input id="asignado" type="text" placeholder="Asignado a">
         <input id="fecha" type="date">
-        <button id="agregar-tarea">Agregar Tarea</button>
+        <div class="contenedor-etiquetas-tarea">
+            <div class="contenedor-agregar-tarea">
+                <button id="agregar-tarea">Agregar Tarea</button>
+            </div>
+            <div class="agregar-etiqueta">
+                <label for="etiqueta">Etiquetas</label>
+                <select id="etiqueta" name="etiqueta">
+                    <option value="todo">TODO</option>
+                    <option value="fixme">FIXME</option>
+                    <option value="review">REVIEW</option>
+                    <option value="ninguna" selected>Ninguna</option>
+                </select>
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
 </body>
 
 </html>

@@ -16,28 +16,41 @@ document.addEventListener("DOMContentLoaded", function () {
     return tareas;
   }
 
-  // Actualiza la vista de las tareas
   function actualizarVista(tareas) {
-    // Limpia las listas actuales
     document
       .querySelectorAll(".task-list")
       .forEach((list) => (list.innerHTML = ""));
 
-    // Agrega las tareas a las listas correspondientes
     tareas.forEach((tarea, index) => {
       const estado = tarea.estado;
       const li = document.createElement("li");
-      li.textContent = `${tarea.descripcion} (Asignado a: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
+
+      // Aplica estilos según la etiqueta
+      switch (tarea.etiqueta) {
+        case "todo":
+          // Resaltado (highlight) para TODO
+          li.innerHTML = `<span style="background-color: #ffff72;">TODO:</span> ${tarea.descripcion} (Asignado a: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
+          break;
+        case "fixme":
+          // Resaltado (highlight) para FIXME
+          li.innerHTML = `<span style="background-color: #ff9999;">FIXME:</span> ${tarea.descripcion} (Asignado a: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
+          break;
+        case "review":
+          // Resaltado (highlight) para REVIEW
+          li.innerHTML = `<span style="background-color: #fffae5;">REVIEW:</span> ${tarea.descripcion} (Asignado a: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
+          break;
+        default:
+          // Si no hay etiqueta, se usa el estilo predeterminado
+          li.textContent = `${tarea.descripcion} (Asignado a: ${tarea.asignadoA}, Fecha: ${tarea.fecha})`;
+      }
 
       const lista = document.querySelector(`#${estado}`);
       lista.appendChild(li);
 
-      // Agrega un boton de eliminar
       const btnEliminar = document.createElement("button");
       btnEliminar.textContent = "Eliminar";
       li.appendChild(btnEliminar);
 
-      // Agrega eventos para cambiar el estado de la tarea
       li.addEventListener("click", () => {
         const estados = ["pendiente", "en-progreso", "hecho"];
         const indice = estados.indexOf(estado);
@@ -47,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
         actualizarVista(tareas);
       });
 
-      // Agrega evento para eliminar la tarea
       btnEliminar.addEventListener("click", () => {
         tareas.splice(index, 1);
         guardarTareasEnLocalStorage(tareas);
@@ -56,11 +68,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Agrega una tarea a la lista
   function agregarTarea() {
     const descripcion = descripcionInput.value;
     const asignadoA = asignadoAInput.value;
     const fecha = fechaInput.value;
+    // Obtiene el valor del campo de selección de etiqueta
+    const etiqueta = document.getElementById("etiqueta").value;
 
     if (descripcion && asignadoA && fecha) {
       const tarea = {
@@ -68,6 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
         asignadoA: asignadoA,
         fecha: fecha,
         estado: "pendiente",
+        // Agrega la etiqueta a la tarea
+        etiqueta: etiqueta,
       };
 
       const tareas = cargarTareasDesdeLocalStorage();
@@ -76,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
       guardarTareasEnLocalStorage(tareas);
       actualizarVista(tareas);
 
-      // Limpiar los campos de entrada
       descripcionInput.value = "";
       asignadoAInput.value = "";
       fechaInput.value = "";
